@@ -1,22 +1,23 @@
+
+var path = require('path');
+var DIST_DIR = path.join(__dirname, '/public');
+var SRC_DIR = path.join(__dirname, '/client');
+
 module.exports = {
-  entry: './client/src/index.jsx',
-  output: {
-    path: __dirname + '/public',
-    publicPath: '/',
-    filename: 'history.js'
-  },
-  mode: 'development',
+  entry: `${SRC_DIR}/index.jsx`,
   devtool: 'source-map',
-  module : {
-    loaders : [
+  output: {
+    filename: 'bundle.js',
+    path: DIST_DIR
+  },
+  module: {
+    rules: [
       {
-        test: /\.(js|jsx)$/,
+        test: [/\.jsx$/],
         exclude: /node_modules/,
-        use: 'babel-loader',
-        query: {
-          presets: ['react', 'es2015']
-       }
+        loader: 'babel-loader'
       }
     ]
   }
 };
+
