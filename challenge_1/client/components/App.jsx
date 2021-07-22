@@ -79,7 +79,7 @@ class App extends React.Component {
 
               </div>
             </div >
-            <div style={{ padding: "15px" }}>
+            <div style={{ padding: "18px" }}>
               < EventList results={this.state.results} />
             </div>
 

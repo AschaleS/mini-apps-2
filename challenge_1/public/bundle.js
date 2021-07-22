@@ -2006,7 +2006,7 @@ var App = /*#__PURE__*/function (_React$Component) {
           onClick: this.getData
         }, " Get Events "))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
           style: {
-            padding: "15px"
+            padding: "18px"
           }
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_EventList_jsx__WEBPACK_IMPORTED_MODULE_2__.default, {
           results: this.state.results
