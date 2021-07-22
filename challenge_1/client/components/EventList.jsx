@@ -5,10 +5,17 @@ const EventList = (props) => (
 
   <div>
     {
+
       props.results.map((result, index) => {
+        let date = result.date
+        if(date < 0) {
+          date = date * -1 + ' BC'
+        } else {
+          date = date + ' AD'
+        }
         return (
           <div key={index} >
-            <div>Date: {result.date}</div>
+            <div>{date}</div>
             <div id={index}>{result.description}</div>
             <br />
             <br />

@@ -1893,7 +1893,8 @@ var App = /*#__PURE__*/function (_React$Component) {
     _this = _super.call(this);
     _this.state = {
       term: '',
-      results: []
+      results: [],
+      totalCount: 0
     };
     _this.getData = _this.getData.bind(_assertThisInitialized(_this));
     _this.handleChange = _this.handleChange.bind(_assertThisInitialized(_this));
@@ -1914,8 +1915,11 @@ var App = /*#__PURE__*/function (_React$Component) {
       var _this2 = this;
 
       axios__WEBPACK_IMPORTED_MODULE_1___default().get("/events?q=".concat(this.state.term, "&_page=1&_limit=10")).then(function (response) {
+        var count = response.headers["x-total-count"];
+
         _this2.setState({
-          results: response.data
+          results: response.data,
+          totalCount: count
         });
       })["catch"](function (error) {
         console.log(error);
@@ -1937,45 +1941,90 @@ var App = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-        style: {
-          color: "#6200FF",
-          padding: "25px",
-          fontWeight: "bold",
-          background: "#81C784",
-          align: "center"
-        }
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h1", null, "Historical Events Finder"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-        style: {
-          padding: "5px",
-          fontWeight: "bold",
-          fontSize: "25px"
-        }
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
-        onChange: this.handleChange
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
-        type: "Submit",
-        onClick: this.getData
-      }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-        style: {
-          padding: "15px"
-        }
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_EventList_jsx__WEBPACK_IMPORTED_MODULE_2__.default, {
-        results: this.state.results
-      }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-        id: "react-paginate"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement((react_paginate__WEBPACK_IMPORTED_MODULE_3___default()), {
-        previousLabel: 'previous',
-        nextLabel: 'next',
-        breakLabel: '...',
-        breakClassName: 'break-me',
-        pageCount: this.state.pageCount,
-        marginPagesDisplayed: 2,
-        pageRangeDisplayed: 10,
-        onPageChange: this.handleClick,
-        containerClassName: 'pagination',
-        activeClassName: 'active'
-      })));
+      if (this.state.results.length === 0) {
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+          style: {
+            color: "#511904",
+            padding: "35px",
+            fontWeight: "bold",
+            background: "#0b96a8",
+            textAlign: "center"
+          }
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h1", null, "Historical Events Finder"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+          style: {
+            color: "#040e13",
+            padding: "35px",
+            fontWeight: "bold",
+            fontSize: "30px",
+            textAlign: "left"
+          }
+        }, "Enter a serach key here:", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
+          style: {
+            width: "300px",
+            height: "30px",
+            fontSize: "22px"
+          },
+          onChange: this.handleChange
+        }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
+          style: {
+            fontSize: "14px",
+            fontWeight: "bold",
+            height: "35px"
+          },
+          onClick: this.getData
+        }, " Get Events ")));
+      } else {
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+          style: {
+            color: "#511904",
+            padding: "35px",
+            fontWeight: "bold",
+            background: "#0b96a8",
+            textAlign: "center"
+          }
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h1", null, "Historical Events Finder"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+          style: {
+            color: "#040e13",
+            padding: "35px",
+            fontWeight: "bold",
+            fontSize: "30px",
+            textAlign: "left"
+          }
+        }, "Enter a serach key here:", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
+          style: {
+            width: "300px",
+            height: "30px",
+            fontSize: "22px"
+          },
+          onChange: this.handleChange
+        }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
+          style: {
+            fontSize: "14px",
+            fontWeight: "bold",
+            height: "35px"
+          },
+          onClick: this.getData
+        }, " Get Events "))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+          style: {
+            padding: "15px"
+          }
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_EventList_jsx__WEBPACK_IMPORTED_MODULE_2__.default, {
+          results: this.state.results
+        }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+          id: "react-paginate"
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement((react_paginate__WEBPACK_IMPORTED_MODULE_3___default()), {
+          previousLabel: 'previous',
+          nextLabel: 'next',
+          breakLabel: '...',
+          breakClassName: 'break-me',
+          pageCount: Math.ceil(this.state.totalCount / 10),
+          marginPagesDisplayed: 2,
+          pageRangeDisplayed: 5,
+          onPageChange: this.handleClick,
+          containerClassName: 'pagination',
+          activeClassName: 'active'
+        })));
+      }
     }
   }]);
 
@@ -2002,9 +2051,17 @@ __webpack_require__.r(__webpack_exports__);
 
 var EventList = function EventList(props) {
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, props.results.map(function (result, index) {
+    var date = result.date;
+
+    if (date < 0) {
+      date = date * -1 + ' BC';
+    } else {
+      date = date + ' AD';
+    }
+
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
       key: index
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, "Date: ", result.date), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, date), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
       id: index
     }, result.description), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null));
   }));
@@ -2025,7 +2082,7 @@ exports = module.exports = __webpack_require__(/*! ../../node_modules/css-loader
 
 
 // module
-exports.push([module.id, ".pagination > li {\n  display: inline-block;\n  padding-left: 0;\n}\n\n.pagination > li {\n  list-style: none;\n  border: 0.9px solid;\n}\n\n.pagination > li > a,\n.pagination > li > span {\n  position: relative;\n  float: left;\n  padding: 6px 12px;\n  line-height: 1.42857143;\n  text-decoration: none;\n  color: #2c689c;\n  background-color: #fff;\n  border: 1px solid #ddd;\n  margin-left: -1px;\n}\n\n.pagination > li.active > a {\n  color: #fff;\n  background-color: #218838;\n  border-color: #1e7e34;\n}\n\n/* Style the active class (and buttons on mouse-over) */\n.pagination > li > a:hover {\n  background-color: #218838;\n  color: white;\n}\n\n.pagination > li:first-child > a,\n.pagination > li:first-child > span {\n  margin-left: 0;\n  padding: 0px;\n  border-bottom-left-radius: 4px;\n  border-top-left-radius: 4px;\n  display: none !important;\n}\n\n.pagination > li:last-child > a,\n.pagination > li:last-child > span {\n  border-bottom-right-radius: 4px;\n  margin-right: 0;\n  padding: 0px !important;\n  border-top-right-radius: 4px;\n  display: none !important;\n}", ""]);
+exports.push([module.id, ".pagination > li {\n  display: inline-block;\n  padding-left: 0;\n}\n\n.pagination > li {\n  list-style: none;\n  border: 0.9px solid;\n}\n\n.pagination > li > a,\n.pagination > li > span {\n  position: relative;\n  float: left;\n  padding: 6px 12px;\n  line-height: 1.42857143;\n  text-decoration: none;\n  color: #2c689c;\n  background-color: #fff;\n  border: 1px solid #ddd;\n  margin-left: -1px;\n}\n\n.pagination > li.active > a {\n  color: #fff;\n  background-color: #218838;\n  border-color: #1e7e34;\n}\n\n/* Style the active class (and buttons on mouse-over) */\n.pagination > li > a:hover {\n  background-color: #218838;\n  color: white;\n}\n\n.pagination > li:first-child > a,\n.pagination > li:first-child > span {\n  position: relative;\n  float: left;\n  padding: 6px 12px;\n  line-height: 1.42857143;\n  text-decoration: none;\n  color: #2c689c;\n  background-color: #fff;\n  border: 1px solid #ddd;\n  margin-left: -1px;\n}\n\n.pagination > li:last-child > a,\n.pagination > li:last-child > span {\n  position: relative;\n  float: left;\n  padding: 6px 12px;\n  line-height: 1.42857143;\n  text-decoration: none;\n  color: #2c689c;\n  background-color: #fff;\n  border: 1px solid #ddd;\n  margin-left: -1px;\n}", ""]);
 
 // exports
 
