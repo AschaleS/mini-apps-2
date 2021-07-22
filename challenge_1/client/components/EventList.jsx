@@ -11,7 +11,7 @@ const EventList = (props) => (
         if(date < 0) {
           date = date * -1 + ' BC'
         } else {
-          date = date + ' AD'
+          date =  'AD ' + date
         }
         return (
           <div key={index} >

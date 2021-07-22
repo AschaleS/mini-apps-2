@@ -2056,7 +2056,7 @@ var EventList = function EventList(props) {
     if (date < 0) {
       date = date * -1 + ' BC';
     } else {
-      date = date + ' AD';
+      date = 'AD ' + date;
     }
 
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
