@@ -14,6 +14,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
+/* harmony import */ var _ScoreCard_jsx__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./ScoreCard.jsx */ "./client/components/ScoreCard.jsx");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -39,6 +40,7 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 
 
 
+
 var App = /*#__PURE__*/function (_React$Component) {
   _inherits(App, _React$Component);
 
@@ -50,17 +52,173 @@ var App = /*#__PURE__*/function (_React$Component) {
     _classCallCheck(this, App);
 
     _this = _super.call(this);
-    _this.state = {};
+    _this.state = {
+      frame: 1,
+      frame2: 1,
+      firstBowl: 0,
+      secondBowl: 0,
+      score: 0,
+      strikeBonus: 0,
+      spareBonus: 0
+    };
+    _this.pinSelection = _this.pinSelection.bind(_assertThisInitialized(_this));
     return _this;
   }
 
   _createClass(App, [{
-    key: "componentDidMount",
-    value: function componentDidMount() {}
+    key: "pinSelection",
+    value: function pinSelection(e) {
+      var points = Number(e.target.value);
+
+      if (this.state.strikeBonus > 3) {
+        this.setState({
+          strikeBonus: 0
+        });
+      }
+
+      if (this.state.spareBonus > 2) {
+        this.setState({
+          spareBonus: 0
+        });
+      }
+
+      this.setState({
+        frame2: this.state.frame2 + 1,
+        score: this.state.score + points
+      });
+
+      if (this.state.frame2 === 1) {
+        if (this.state.strikeBonus === 1) {
+          this.setState({
+            score: this.state.score + points * 2,
+            strikeBonus: this.state.strikeBonus + 1
+          });
+        }
+
+        if (this.state.spareBonus === 1) {
+          this.setState({
+            score: this.state.score + points * 2,
+            spareBonus: this.state.spareBonus + 1
+          });
+        }
+
+        this.setState({
+          firstBowl: points
+        });
+      }
+
+      if (this.state.frame2 === 2) {
+        if (this.state.strikeBonus === 2) {
+          this.setState({
+            score: this.state.score + points * 2,
+            strikeBonus: this.state.strikeBonus + 1
+          });
+        }
+
+        this.setState({
+          secondBowl: points,
+          frame: this.state.frame + 1,
+          frame2: 1
+        });
+      }
+
+      if (points === 10 && this.state.frame2 === 1) {
+        this.setState({
+          frame: this.state.frame + 1,
+          frame2: 1,
+          strikeBonus: this.state.strikeBonus + 1
+        });
+      }
+
+      if (this.state.firstBowl + points === 10) {
+        this.setState({
+          spareBonus: 1
+        });
+      }
+
+      if (this.state.frame === 10) {
+        alert('The Game is Over! Your Total Score is: ' + this.state.score);
+        this.setState({
+          frame: 1,
+          frame2: 1,
+          firstBowl: 0,
+          secondBowl: 0,
+          score: 0,
+          strikeBonus: 0,
+          spareBonus: 0
+        });
+      }
+    }
   }, {
     key: "render",
     value: function render() {
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, "Hello World");
+      var _this2 = this;
+
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+        style: {
+          alignItems: "center",
+          padding: "25px"
+        }
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h2", null, "Bowling"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
+        value: "1",
+        onClick: function onClick(e) {
+          return _this2.pinSelection(e);
+        }
+      }, "1"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
+        value: "2",
+        onClick: function onClick(e) {
+          return _this2.pinSelection(e);
+        }
+      }, "2"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
+        value: "3",
+        onClick: function onClick(e) {
+          return _this2.pinSelection(e);
+        }
+      }, "3"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
+        value: "4",
+        onClick: function onClick(e) {
+          return _this2.pinSelection(e);
+        }
+      }, "4"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
+        value: "5",
+        onClick: function onClick(e) {
+          return _this2.pinSelection(e);
+        }
+      }, "5"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
+        value: "6",
+        onClick: function onClick(e) {
+          return _this2.pinSelection(e);
+        }
+      }, "6"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
+        value: "7",
+        onClick: function onClick(e) {
+          return _this2.pinSelection(e);
+        }
+      }, "7"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
+        value: "8",
+        onClick: function onClick(e) {
+          return _this2.pinSelection(e);
+        }
+      }, "8"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
+        value: "9",
+        onClick: function onClick(e) {
+          return _this2.pinSelection(e);
+        }
+      }, "9"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
+        value: "10",
+        onClick: function onClick(e) {
+          return _this2.pinSelection(e);
+        }
+      }, "10"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
+        value: "0",
+        onClick: function onClick(e) {
+          return _this2.pinSelection(e);
+        }
+      }, "0"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
+        value: "*"
+      }, "*"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_ScoreCard_jsx__WEBPACK_IMPORTED_MODULE_2__.default, {
+        score: this.state
+      })));
     }
   }]);
 
@@ -68,6 +226,31 @@ var App = /*#__PURE__*/function (_React$Component) {
 }(react__WEBPACK_IMPORTED_MODULE_0__.Component);
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (App);
+
+/***/ }),
+
+/***/ "./client/components/ScoreCard.jsx":
+/*!*****************************************!*\
+  !*** ./client/components/ScoreCard.jsx ***!
+  \*****************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+
+
+var ScoreCard = function ScoreCard(props) {
+  if (props.score.frame2 === 2) {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, "# of Pins Hit: ", props.score.firstBowl), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, "Frame: ", props.score.frame), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, "Total Score: ", props.score.score));
+  } else {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, "# of Pins Hit: ", props.score.secondBowl), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, "Frame: ", props.score.frame), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, "Total Score: ", props.score.score));
+  }
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (ScoreCard);
 
 /***/ }),
 
