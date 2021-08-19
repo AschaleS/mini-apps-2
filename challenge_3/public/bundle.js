@@ -137,7 +137,7 @@ var App = /*#__PURE__*/function (_React$Component) {
       }
 
       if (this.state.frame === 10) {
-        alert('The Game is Over! Your Total Score is: ' + this.state.score);
+        alert('The Game is Over! Your Total Score is: ' + this.state.score + "\n" + ' Press Ok to play again!');
         this.setState({
           frame: 1,
           frame2: 1,
@@ -159,63 +159,111 @@ var App = /*#__PURE__*/function (_React$Component) {
           alignItems: "center",
           padding: "25px"
         }
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h2", null, "Bowling"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h1", null, "Bowling"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
         value: "1",
         onClick: function onClick(e) {
           return _this2.pinSelection(e);
+        },
+        style: {
+          width: "50px",
+          height: "50px"
         }
       }, "1"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
         value: "2",
         onClick: function onClick(e) {
           return _this2.pinSelection(e);
+        },
+        style: {
+          width: "50px",
+          height: "50px"
         }
       }, "2"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
         value: "3",
         onClick: function onClick(e) {
           return _this2.pinSelection(e);
+        },
+        style: {
+          width: "50px",
+          height: "50px"
         }
       }, "3"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
         value: "4",
         onClick: function onClick(e) {
           return _this2.pinSelection(e);
+        },
+        style: {
+          width: "50px",
+          height: "50px"
         }
       }, "4"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
         value: "5",
         onClick: function onClick(e) {
           return _this2.pinSelection(e);
+        },
+        style: {
+          width: "50px",
+          height: "50px"
         }
       }, "5"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
         value: "6",
         onClick: function onClick(e) {
           return _this2.pinSelection(e);
+        },
+        style: {
+          width: "50px",
+          height: "50px"
         }
       }, "6"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
         value: "7",
         onClick: function onClick(e) {
           return _this2.pinSelection(e);
+        },
+        style: {
+          width: "50px",
+          height: "50px"
         }
       }, "7"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
         value: "8",
         onClick: function onClick(e) {
           return _this2.pinSelection(e);
+        },
+        style: {
+          width: "50px",
+          height: "50px"
         }
       }, "8"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
         value: "9",
         onClick: function onClick(e) {
           return _this2.pinSelection(e);
+        },
+        style: {
+          width: "50px",
+          height: "50px"
         }
       }, "9"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
         value: "10",
         onClick: function onClick(e) {
           return _this2.pinSelection(e);
+        },
+        style: {
+          width: "50px",
+          height: "50px"
         }
       }, "10"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
         value: "0",
         onClick: function onClick(e) {
           return _this2.pinSelection(e);
+        },
+        style: {
+          width: "50px",
+          height: "50px"
         }
       }, "0"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
-        value: "*"
+        value: "*",
+        style: {
+          width: "50px",
+          height: "50px"
+        }
       }, "*"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_ScoreCard_jsx__WEBPACK_IMPORTED_MODULE_2__.default, {
         score: this.state
       })));
@@ -244,9 +292,19 @@ __webpack_require__.r(__webpack_exports__);
 
 var ScoreCard = function ScoreCard(props) {
   if (props.score.frame2 === 2) {
-    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, "# of Pins Hit: ", props.score.firstBowl), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, "Frame: ", props.score.frame), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, "Total Score: ", props.score.score));
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      style: {
+        fontSize: "18px",
+        fontWeight: "bold"
+      }
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, " # of Pins Hit: ", props.score.firstBowl), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, " Frame: ", props.score.frame), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, " Total Score: ", props.score.score));
   } else {
-    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, "# of Pins Hit: ", props.score.secondBowl), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, "Frame: ", props.score.frame), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, "Total Score: ", props.score.score));
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      style: {
+        fontSize: "18px",
+        fontWeight: "bold"
+      }
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, " # of Pins Hit: ", props.score.secondBowl), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, " Frame: ", props.score.frame), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, " Total Score: ", props.score.score));
   }
 };
 

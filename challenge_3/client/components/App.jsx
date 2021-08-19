@@ -84,7 +84,7 @@ class App extends React.Component {
     }
 
     if (this.state.frame === 10) {
-      alert('The Game is Over! Your Total Score is: ' + this.state.score);
+      alert('The Game is Over! Your Total Score is: ' + this.state.score + "\n" + ' Press Ok to play again!');
       this.setState({
         frame: 1,
         frame2: 1,
@@ -104,20 +104,20 @@ class App extends React.Component {
     return (
 
       <div style={{alignItems: "center", padding: "25px"}}>
-        <h2>Bowling</h2>
+        <h1>Bowling</h1>
       <div>
-        <button value='1' onClick={(e) => this.pinSelection(e)}>1</button>
-        <button value='2' onClick={(e) => this.pinSelection(e)}>2</button>
-        <button value='3' onClick={(e) => this.pinSelection(e)}>3</button><br/>
-        <button value='4' onClick={(e) => this.pinSelection(e)}>4</button>
-        <button value='5' onClick={(e) => this.pinSelection(e)}>5</button>
-        <button value='6' onClick={(e) => this.pinSelection(e)}>6</button><br/>
-        <button value='7' onClick={(e) => this.pinSelection(e)}>7</button>
-        <button value='8' onClick={(e) => this.pinSelection(e)}>8</button>
-        <button value='9' onClick={(e) => this.pinSelection(e)}>9</button><br/>
-        <button value='10' onClick={(e) => this.pinSelection(e)}>10</button>
-        <button value='0' onClick={(e) => this.pinSelection(e)}>0</button>
-        <button value='*'>*</button>
+        <button value='1' onClick={(e) => this.pinSelection(e)} style={{width: "50px", height: "50px"}}>1</button>
+        <button value='2' onClick={(e) => this.pinSelection(e)}style={{width: "50px", height: "50px"}}>2</button>
+        <button value='3' onClick={(e) => this.pinSelection(e)}style={{width: "50px", height: "50px"}}>3</button><br/>
+        <button value='4' onClick={(e) => this.pinSelection(e)}style={{width: "50px", height: "50px"}}>4</button>
+        <button value='5' onClick={(e) => this.pinSelection(e)}style={{width: "50px", height: "50px"}}>5</button>
+        <button value='6' onClick={(e) => this.pinSelection(e)}style={{width: "50px", height: "50px"}}>6</button><br/>
+        <button value='7' onClick={(e) => this.pinSelection(e)}style={{width: "50px", height: "50px"}}>7</button>
+        <button value='8' onClick={(e) => this.pinSelection(e)}style={{width: "50px", height: "50px"}}>8</button>
+        <button value='9' onClick={(e) => this.pinSelection(e)}style={{width: "50px", height: "50px"}}>9</button><br/>
+        <button value='10' onClick={(e) => this.pinSelection(e)}style={{width: "50px", height: "50px"}}>10</button>
+        <button value='0' onClick={(e) => this.pinSelection(e)}style={{width: "50px", height: "50px"}}>0</button>
+        <button value='*'style={{width: "50px", height: "50px"}}>*</button>
         <ScoreCard score={this.state} />
         </div>
 
