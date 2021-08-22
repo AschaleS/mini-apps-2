@@ -24,37 +24,36 @@ const rootReducer = (state = { win: false, gameover: false, board: [] }, action)
         let x = Math.floor(Math.random() * rows);
         let y = Math.floor(Math.random() * cols);
         if (board[x][y].value !== 11) {
-          board[x][y].value = 9;
+          board[x][y].value = 11;
           b--;
         }
       }
-
       for (let k = 0; k < rows; k++) {
         for (let l = 0; l < cols; l++) {
           let count = 0;
-          if (board[k][l].value !== 9) {
-            if (k > 0 && l > 0 && board[k - 1][l - 1].value === 9) {
+          if (board[k][l].value !== 11) {
+            if (k > 0 && l > 0 && board[k - 1][l - 1].value === 11) {
               count++;
             }
-            if (k > 0 && board[k - 1][l].value === 9) {
+            if (k > 0 && board[k - 1][l].value === 11) {
               count++;
             }
-            if (k > 0 && l < cols - 1 && board[k - 1][l + 1].value === 9) {
+            if (k > 0 && l < cols - 1 && board[k - 1][l + 1].value === 11) {
               count++;
             }
-            if (l > 0 && board[k][l - 1].value === 9) {
+            if (l > 0 && board[k][l - 1].value === 11) {
               count++;
             }
-            if (l < cols - 1 && board[k][l + 1].value === 9) {
+            if (l < cols - 1 && board[k][l + 1].value === 11) {
               count++;
             }
-            if (k < rows - 1 && l > 0 && board[k + 1][l - 1].value === 9) {
+            if (k < rows - 1 && l > 0 && board[k + 1][l - 1].value === 11) {
               count++;
             }
-            if (k < rows - 1 && board[k + 1][l].value === 9) {
+            if (k < rows - 1 && board[k + 1][l].value === 11) {
               count++;
             }
-            if (k < rows - 1 && l < cols - 1 && board[k + 1][l + 1].value === 9) {
+            if (k < rows - 1 && l < cols - 1 && board[k + 1][l + 1].value === 11) {
               count++;
             }
             if (count === 0) {
@@ -65,7 +64,6 @@ const rootReducer = (state = { win: false, gameover: false, board: [] }, action)
           }
         }
       }
-
       return {
         ...state,
         board,
@@ -85,7 +83,6 @@ const rootReducer = (state = { win: false, gameover: false, board: [] }, action)
         board[x][y].flag = true;
         counter--;
       }
-
       return {
         ...state,
         board,
@@ -105,10 +102,10 @@ const rootReducer = (state = { win: false, gameover: false, board: [] }, action)
       showMore(board, x, y);
 
       // Check if the gane is over or a win
-      if (board[x][y].value === 9) {
+      if (board[x][y].value === 11) {
         for (let i = 0; i < board.length; i++) {
           for (let j = 0; j < board[i].length; j++) {
-            if (board[i][j].value === 9) {
+            if (board[i][j].value === 11) {
               board[i][j].explored = true;
             }
           }
@@ -118,7 +115,7 @@ const rootReducer = (state = { win: false, gameover: false, board: [] }, action)
         let isWin = true;
         for (let i = 0; i < board.length; i++) {
           for (let j = 0; j < board[i].length; j++) {
-            if (board[i][j].explored === false && board[i][j].value !== 9) {
+            if (board[i][j].explored === false && board[i][j].value !== 11) {
               isWin = false;
               break;
             }
@@ -126,7 +123,6 @@ const rootReducer = (state = { win: false, gameover: false, board: [] }, action)
         }
         state.win = isWin;
       }
-
       return {
         ...state,
         board

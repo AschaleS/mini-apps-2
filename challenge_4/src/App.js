@@ -22,7 +22,7 @@ class App extends React.Component {
     const { boardSize} = this.state;
     return (
       <div className="App">
-        <h2 style={{color: "#bf360c"}}>Play by finding all the boxes without mines! </h2>
+        <h2 style={{color: "#15a52c", fontFamily: "American Typewriter"}}>Play by finding all the boxes without mines! </h2>
 
          <form onSubmit={(e) => {
           e.preventDefault();

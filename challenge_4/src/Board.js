@@ -13,7 +13,7 @@ class Board extends React.Component {
                 <tr key={rowIndex}>
                   {row.map((cell, colIndex) => {
                     const tdClassNames = [];
-                    if (cell.value === 9 && cell.explored) tdClassNames.push('bomb');
+                    if (cell.value === 11 && cell.explored) tdClassNames.push('bomb');
                     if (cell.value === 1) tdClassNames.push('one');
                     if (cell.value === 2) tdClassNames.push('two');
                     if (cell.value === 3) tdClassNames.push('three');
@@ -30,7 +30,7 @@ class Board extends React.Component {
                         }}>
                         {
                           cell.explored ?
-                            (cell.value === 9 ?
+                            (cell.value === 11 ?
                               <img alt="bomb" src="bomb.svg" height="15" />
                               :
                               cell.value)

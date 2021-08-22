@@ -7,6 +7,9 @@ body {
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  background-color: #e1e4e2;
+  background-blend-mode: multiply;
 
 }
 

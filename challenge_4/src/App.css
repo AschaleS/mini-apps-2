@@ -44,17 +44,97 @@
   }
 }
 
-table td {
-  font-weight: normal;
-  height: 38px;
-  width: 38px;
+
+form {
+  margin: 30px 0;
+}
+
+select {
+  padding: 5px 10px;
+  margin-right: 10px;
+  font-size: 1.0em;
+  border-width: 1px;
+  border-color: #e1e4e2;
+  background-color: #6cb3da;
 }
 
 table {
   margin: 0 auto;
   table-layout: fixed;
+  margin-top: 75px;
   border-style: inset;
   border-width: 1px;
-  border-color: #cbcbcb;
-  background-color: #f5e2de;
+  border-color: #cbcbcb #fff #fff #cbcbcb;
+  background-color: #ded9d8;
 }
+
+table tbody {
+  border-collapse: collapse;
+  display: table-cell;
+}
+
+
+table td {
+  font-weight: normal;
+  height: 38px;
+  width: 38px;
+  padding: 0;
+  box-sizing: content-box;
+  border: 1px solid rgb(27, 69, 96);
+  font-family: 'Arial Black';
+  font-size: 1.2em;
+}
+
+button {
+  border-style: outset;
+  border-width: 3px;
+  border-color: #e1e4e2 #cbcbcb #cbcbcb #fff;
+  background-color: #dad4f7;
+  outline: 0;
+  cursor: pointer;
+  padding:0;
+}
+
+form button {
+  padding: 5px 10px;
+  font-size: 1.2em;
+}
+
+td button {
+  height: 103%;
+  width: 103%;
+}
+
+.bomb {
+  background-color: rgb(247, 79, 79);
+}
+
+.game-over,
+.win {
+  position: absolute;
+  top: 115px;
+  left: 50%;
+  width: 300px;
+  margin-left: -150px;
+  box-sizing: border-box;
+  font-family: 'Ubuntu';
+  color: rgb(0, 0, 255);
+  font-size: 1.8em;
+}
+
+.one {
+  color: #d75252;
+}
+
+.two {
+  color: #0a7916;
+}
+
+.three {
+  color: #0000ff8a;
+}
+
+.four {
+ color: #03a9bbd9;
+}
+
