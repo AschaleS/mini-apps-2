@@ -34,7 +34,7 @@ class App extends React.Component {
     } else {
       return (
         <div>
-          <h1 style={{textAlign: "center"}}>Bitcoin Price Index (1 January - 30 June 2021)</h1>
+          <h1 style={{textAlign: "center"}}>Bitcoin Price Index</h1>
           <ChartJs result={this.state} />
           <h4 style={{textAlign: "center"}}> Powered by <a style={{textDecoration: "none"}} href={'https://www.coindesk.com/price/bitcoin'} > CoinDesk </a> </h4>
         </div>

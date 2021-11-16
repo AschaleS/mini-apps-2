@@ -1918,7 +1918,7 @@ var App = /*#__PURE__*/function (_React$Component) {
           style: {
             textAlign: "center"
           }
-        }, "Bitcoin Price Index (1 January - 30 June 2021)"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_ChartJS_jsx__WEBPACK_IMPORTED_MODULE_3__.default, {
+        }, "Bitcoin Price Index"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_ChartJS_jsx__WEBPACK_IMPORTED_MODULE_3__.default, {
           result: this.state
         }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h4", {
           style: {
